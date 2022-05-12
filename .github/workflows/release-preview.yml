@@ -23,7 +23,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore /p:ContinuousIntegrationBuild=true --no-cache
     - name: Build
-      run: dotnet build -f netstandard2.0 --configuration Release --no-restore /p:ContinuousIntegrationBuild=true .\src\Serilog.Sinks.Email\Serilog.Sinks.Email.csproj
+      run: dotnet build -f netstandard2.0 --configuration Release --no-restore /p:ContinuousIntegrationBuild=true ./src/Serilog.Sinks.Email/Serilog.Sinks.Email.csproj
     - name: Test
       run: dotnet test -f net6.0  -c Release
     - name: Pack
