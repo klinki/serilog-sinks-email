@@ -280,5 +280,45 @@ namespace Serilog
 
             return loggerConfiguration.Sink(batchingSink, restrictedToMinimumLevel);
         }
+
+        /// <summary>
+        /// Adds a sink that sends log events via email.
+        /// </summary>
+        /// <param name="loggerConfiguration">The logger configuration.</param>
+        /// <param name="fromEmail">The email address emails will be sent from.</param>
+        /// <param name="toEmails">The email addresses emails will be sent to.</param>
+        /// <param name="mailServer">Mail server address.</param>
+        /// <param name="outputTemplate">A message template describing the format used to write to the sink
+        /// the default is "{Timestamp} [{Level}] {Message}{NewLine}{Exception}".</param>
+        /// <param name="restrictedToMinimumLevel">The minimum log event level required in order to write an event to the sink.</param>
+        /// <param name="batchPostingLimit">The maximum number of events to post in a single batch.</param>
+        /// <param name="period">The time to wait between checking for event batches.</param>
+        /// <param name="networkCredentials">Credentials for mail server.</param>
+        /// <param name="mailSubject">The subject, can be a plain string or a template such as {Timestamp} [{Level}] occurred.</param>
+        /// <returns>Logger configuration, allowing configuration to continue.</returns>
+        /// <exception cref="ArgumentNullException">A required parameter is null.</exception>
+        public static LoggerConfiguration Email(
+            this LoggerSinkConfiguration loggerConfiguration,
+            string fromEmail,
+            IEnumerable<string> toEmails,
+            string mailServer,
+            string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}{NewLine}{Properties}",
+            LogEventLevel restrictedToMinimumLevel = LevelAlias.Maximum,
+            int? batchPostingLimit = null,
+            TimeSpan? period = null,
+            NetworkCredential networkCredentials = null,
+            string mailSubject = EmailConnectionInfo.DefaultSubject
+        ) {
+            return Email(
+                loggerConfiguration,
+                fromEmail: fromEmail,
+                toEmails: toEmails,
+                mailServer: mailServer,
+                outputTemplate: outputTemplate,
+                restrictedToMinimumLevel: restrictedToMinimumLevel,
+                mailSubject: mailSubject,
+                networkCredential: networkCredentials
+            );
+        }
     }
 }
