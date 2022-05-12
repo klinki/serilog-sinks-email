@@ -39,8 +39,9 @@ jobs:
 
     - name: Push
       run: |
-        dotnet nuget push ${env:PACKAGE_NAME}.${env:VERSION}.nupkg --source https://nuget.pkg.github.com/klinki/index.json --api-key ${env:GITHUB_TOKEN}
+        $PACKAGE_PATH="${env:PACKAGE_NAME}.${env:VERSION}.nupkg"
+        echo $PACKAGE_PATH;
+        dotnet nuget push $PACKAGE_PATH  --source https://nuget.pkg.github.com/klinki/index.json --api-key ${env:GITHUB_TOKEN}
       env:
         PACKAGE_NAME: Serilog.Sinks.Email
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PACKAGE_PATH: ${{ PACKAGE_NAME }}.${{ VERSION }}.nupkg
