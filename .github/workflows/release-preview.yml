@@ -38,7 +38,9 @@ jobs:
         dotnet pack --configuration Release --no-build /p:Version=${env:VERSION} /p:ContinuousIntegrationBuild=true /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg --output . /p:PackageVersion=${env:VERSION}
 
     - name: Push
-      run: dotnet nuget push ${env:PACKAGE_NAME}.${env:VERSION}.nupkg --source https://nuget.pkg.github.com/klinki/index.json --api-key ${env:GITHUB_TOKEN}
+      run: |
+        dotnet nuget push ${env:PACKAGE_NAME}.${env:VERSION}.nupkg --source https://nuget.pkg.github.com/klinki/index.json --api-key ${env:GITHUB_TOKEN}
       env:
         PACKAGE_NAME: Serilog.Sinks.Email
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PACKAGE_PATH: ${{ PACKAGE_NAME }}.${{ VERSION }}.nupkg
