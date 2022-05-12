@@ -34,6 +34,7 @@ jobs:
       run: dotnet test -f net6.0  -c Release
     - name: Pack
       run: |
+        echo $env:VERSION
         dotnet pack --configuration Release --no-build /p:Version=${env:VERSION} /p:ContinuousIntegrationBuild=true /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg --output . /p:PackageVersion=${env:VERSION}
 
     - name: Push
