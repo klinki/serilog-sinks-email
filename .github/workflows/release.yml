@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: dotnet build f netstandard2.0 --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
       - name: Test
-        run: dotnet test -f netcoreapp3.1  -c Release
+        run: dotnet test -f net6.0  -c Release
       - name: Pack
         run: dotnet pack /p:TargetFrameworks=netstandard2.0 --configuration Release --no-build /p:Version=${VERSION} /p:ContinuousIntegrationBuild=true /p:IncludeSymbols=true /p:SymbolPackageFormat=snupkg --output . /p:PackageVersion=${VERSION}
       - name: Push
