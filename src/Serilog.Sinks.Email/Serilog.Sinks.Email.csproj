@@ -4,7 +4,7 @@
     <Description>The email sink for Serilog</Description>
     <VersionPrefix>2.4.0</VersionPrefix>
     <Authors>Serilog Contributors</Authors>
-    <TargetFrameworks>net45;net47;netstandard1.3;netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net48;netstandard1.3;netstandard2.0;netstandard2.1</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Serilog.Sinks.Email</AssemblyName>
     <AssemblyOriginatorKeyFile>../../assets/Serilog.snk</AssemblyOriginatorKeyFile>
@@ -15,7 +15,7 @@
     <PackageIcon>serilog-sink-nuget.png</PackageIcon>
     <PackageProjectUrl>http://serilog.net</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/serilog/serilog-sinks-email</RepositoryUrl>
+    <RepositoryUrl>https://github.com/klinki/serilog-sinks-email</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
@@ -34,7 +34,7 @@
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>  
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net47' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
     <Reference Include="System.Net" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,7 +43,7 @@
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
     <DefineConstants>$(DefineConstants);SYSTEM_NET</DefineConstants>
   </PropertyGroup>  
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net47' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net48' ">
     <DefineConstants>$(DefineConstants);SYSTEM_NET</DefineConstants>
   </PropertyGroup>
 
