@@ -7,7 +7,8 @@ on:
 
 jobs:
   build:
-
+    permissions: 
+      packages: write
     runs-on: windows-latest
     defaults:
       run:
